@@ -3,22 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AcunMedyaAkademiPortfolio.Models;
 
 namespace AcunMedyaAkademiPortfolio.Controllers
 {
     public class CategoryController : Controller
     {
+        DbDominicPortfolioEntities1 db = new DbDominicPortfolioEntities1();
         // GET: Category
-        public ActionResult Index()
+        public ActionResult CategoryList()
+        {
+            var values = db.TblCategory.ToList();
+            return View(values);
+        }
+        [HttpGet]
+        public ActionResult CreateCategory()
         {
             return View();
         }
-        public string birlestir()
+        [HttpPost]
+        public ActionResult CreateCategory(TblCategory p)
         {
-            string cumle1 = "Merhaba";
-            string cumle2 = "Acunmedya Öğrencileri";
-            string cumle3=cumle1 + cumle2;
-            return cumle3;
+            db.TblCategory.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("CategoryList");
+        }
+        public ActionResult DeleteCategory(int id)
+        {
+            var values = db.TblCategory.Find(id);
+            db.TblCategory.Remove(values);
+            db.SaveChanges();
+            return RedirectToAction("CategoryList");
+        }
+        [HttpGet]
+        public ActionResult UpdateCategory(int id)
+        {
+            var value = db.TblCategory.Find(id);
+            return View(value);
+        }
+        [HttpPost]
+        public ActionResult UpdateCategory(TblCategory p)
+        {
+            var value = db.TblCategory.Find(p.CategoryID);
+            value.CategoryName = p.CategoryName;
+            db.SaveChanges();
+            return RedirectToAction("CategoryList");
         }
     }
 }
