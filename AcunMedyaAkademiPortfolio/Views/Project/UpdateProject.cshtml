@@ -14,7 +14,7 @@
     @Html.TextBoxFor(x => x.ImageUrl, new { @class = "table table-bordered" })
     <br />
     <label>Proje Kategorisi</label>
-    @Html.TextBoxFor(x => x.CategoryId, new { @class = "table table-bordered" })
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.v, new { @class = "table table-bordered" })
     <br />
     <label>Proje Açıklaması</label>
     <textarea rows="4" class="table table-bordered" name="Description">@Model.Description</textarea>

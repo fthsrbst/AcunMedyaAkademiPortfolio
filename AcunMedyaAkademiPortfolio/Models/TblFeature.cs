@@ -16,8 +16,8 @@ namespace AcunMedyaAkademiPortfolio.Models
     {
         public int FeatureID { get; set; }
         public string NameSurname { get; set; }
-        public string Desription { get; set; }
+        public string Description { get; set; }
         public string ProjectName { get; set; }
-        public string ProjectUrl { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

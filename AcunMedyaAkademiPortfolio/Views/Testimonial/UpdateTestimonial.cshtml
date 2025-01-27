@@ -1,0 +1,27 @@
+﻿@model  AcunMedyaAkademiPortfolio.Models.TblTestimonial
+@{
+    ViewBag.Title = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Proje Güncelleme</h2>
+
+<form method="post">
+    <label>Testimonial ID</label>
+    @Html.TextBoxFor(x => x.TestimonialID, new { @class = "table table-bordered" })
+    <br />
+    <label>Description</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "table table-bordered" })
+    <br />
+    <label>NameSurname</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "table table-bordered" })
+    <br />
+
+    <label>Testimonial Görsel Linki</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "table table-bordered" })
+    <br />
+    <label>Job</label>
+    @Html.TextBoxFor(x => x.Job, new { @class = "table table-bordered" })
+    <br />
+    <button class="btn btn-success">Proje Güncelle</button>
+</form>

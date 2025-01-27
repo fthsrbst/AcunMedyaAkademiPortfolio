@@ -9,18 +9,20 @@ namespace AcunMedyaAkademiPortfolio.Controllers
 {
     public class CategoryController : Controller
     {
-        DbDominicPortfolioEntities1 db = new DbDominicPortfolioEntities1();
+        DbDominicPortfolioEntities2 db = new DbDominicPortfolioEntities2();
         // GET: Category
         public ActionResult CategoryList()
         {
             var values = db.TblCategory.ToList();
             return View(values);
         }
+
         [HttpGet]
         public ActionResult CreateCategory()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult CreateCategory(TblCategory p)
         {

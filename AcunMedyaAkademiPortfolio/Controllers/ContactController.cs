@@ -9,19 +9,30 @@ namespace AcunMedyaAkademiPortfolio.Controllers
 {
     public class ContactController : Controller
     {
-        DbDominicPortfolioEntities1 db = new DbDominicPortfolioEntities1 ();
-        // GET: Contact
+        DbDominicPortfolioEntities2 db = new DbDominicPortfolioEntities2();
         public ActionResult ContactList()
         {
             var values = db.TblContact.ToList();
             return View(values);
         }
-        public ActionResult DeleteContact(int id)
+        public ActionResult DeleteContact(int ID)
         {
-            var values = db.TblContact.Find(id);
+            var values = db.TblContact.Find(ID);
             db.TblContact.Remove(values);
             db.SaveChanges();
             return RedirectToAction("ContactList");
+        }
+        [HttpGet]
+        public ActionResult CreateContact()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateContact(TblContact p)
+        {
+            db.TblContact.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Default");
         }
     }
 }

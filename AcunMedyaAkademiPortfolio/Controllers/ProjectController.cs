@@ -11,7 +11,7 @@ namespace AcunMedyaAkademiPortfolio.Controllers
     public class ProjectController : Controller
     {
 
-        DbDominicPortfolioEntities1 db = new DbDominicPortfolioEntities1();
+        DbDominicPortfolioEntities2  db = new DbDominicPortfolioEntities2();
         public ActionResult ProjectList()
         {
             var values = db.TblProject.ToList();
@@ -46,6 +46,13 @@ namespace AcunMedyaAkademiPortfolio.Controllers
         [HttpGet]
         public ActionResult UpdateProject(int id)
         {
+            List<SelectListItem> values1 = (from x in db.TblCategory.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryID.ToString()
+                                           }).ToList();
+            ViewBag.v = values1;
             var value=db.TblProject.Find(id);
             return View(value);
         }
